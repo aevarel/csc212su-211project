@@ -17,7 +17,7 @@ This project, when successfully compiled, will alleviate that concern for this c
 ## Requirements
 
 Choose a group
-- [ ] Form a group of 3-4 members
+- [X] Form a group of 3-4 members
 
 Program
 - [ ] Write a program to successfully evaluate individual deliverables from CSC 212 to provide an accurate output of semester course grades. Viewable outputs should include:
@@ -33,7 +33,7 @@ Program
 - [ ] use write output to write any changes back to your input file
 
 Repository
-- [ ] a _primary_ repository to house your program
+- [X] a _primary_ repository to house your program
 - proof of contribution
   - [ ] `commit` and `push` actions made by each group member
 
