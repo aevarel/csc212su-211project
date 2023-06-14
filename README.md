@@ -86,16 +86,19 @@ public:
             - gradeCategories() default constructor:
 ``` 
 #### Deliverable{
-
+```
 // object of an assignment
 private:
-      - grade // the grade of the assignments
-      - 
-public:
+string type = could be any of [Labs, Assignments, Project1, Project2, Exam]
+string name = derived from input file
+Int maxPoints = could be any of  [25, 50, 150, 350, 100]
 
+public: 
+// parameterized constructor 
+Deliverable(string type, string name, int maxPoints){
 
-}
+ 
+};
 
-}
-
+```
 
