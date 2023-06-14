@@ -75,6 +75,7 @@ Program
 ## Class Structure
 
 #### Gradebook
+```
 private
 categoryScores[Labs, Assignments, Project1, Project2, Exam] = [200, 200, 150, 350, 100]
 categoryScoreMaxes[25, 50, 150, 350, 100]
@@ -83,7 +84,7 @@ public:
         - vector<Category> gradeCategories // vector of the different course categories
       - vector<*deliverable> deliverableGradebook // vector of pointers to the actual vectors of deliverables based on their categories, which we will create from the input.txt
             - gradeCategories() default constructor:
-
+``` 
 #### Deliverable{
 
 // object of an assignment
