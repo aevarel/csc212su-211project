@@ -7,17 +7,18 @@
 An effective output will provide merely a course grade calculated based on all possible points that can be earned within the course.
 Program
 - [ ] Write a program to successfully evaluate individual deliverables from CSC 212 to provide an accurate output of semester course grades. Viewable outputs should include:
+
 - [ ] individual: returns an individual deliverable name and grade
-      - get deliverable object
-            - return name, and grade
-     some possible variables^^^
+      - get **deliverable** object
+            - return `_name_`, and `_grade_`
+
 - [ ] category: returns all grades from the category and category total
-     get category
-      - probably a vector<deliverables> 
-      - initialize a category of each type at runtime 
+     get `_category_` 
 - [ ] course: ability to return each of the following:
   - all grades within their respective categories and a course overall
+      
   - only category totals and course overall
+  
   - only the course overall
   
   // since all the grades operate off of a point basis, we can set the 
@@ -75,46 +76,31 @@ Program
 
 #### Gradebook
 
-#### Deliverable{
-// object of an assignment
-private:
-      - grade // the grade of the assignments
-      - 
+  
+private variables
+      - vector<Category> gradeCategories // vector of the different course categories
+      - vector<*deliverable> deliverableGradebook // vector of pointers to the actual vectors of deliverables based on their categories, which we will create from the input.txt
+      
+
 public:
+      - gradeCategories() default constructor:
+            
 
 
 #### Category{
-- [ ] category: returns all grades from the category and category total
-     get category
-      - probably a vector<deliverables> 
-      - initialize a category of each type at runtime 
+
 ```
 private:
-categoryScores[Labs, Assignments, Projects, Final] = [200, 200, 500,100]
+categoryScores[Labs, Assignments, Project1, Project2, Exam] = [200, 200, 150, 350, 100]
 categoryScoreMaxes[25, 50, 150, 350, 100]
 public:
 
 
 ```
-- create a parameterized constructor
-      - if type == labs, create
-  }
-}
-  
-private variables
-      - vector<Category> gradeCategories // vector of the different course categories
-      - vector<*deliverable> deliverableGradebook // vector of pointers to the actual deliverable objects we will create from the input.txt   
-
-public:
-            - gradeCategories()` default constructor:
-            // basically we're pushing a bunch of pointers to the private 'Category' objects of different types 
-            ```
-            this->gradeCategories.push_back(*labs); this->gradeCategories.push_back(*assignments); this->gradeCategories.push_back(*projects); this->gradeCategories.push_back(*final_exam)
-            ```
 
 
+#### Deliverable{
 
-#### Deliverable
 // object of an assignment
 private:
       - grade // the grade of the assignments
@@ -122,5 +108,8 @@ private:
 public:
 
 
-#### Student is a Gradebook (Student::Gradebook)
+}
+
+}
+
 
