@@ -103,11 +103,22 @@ public:
 
 // object of an assignment
 private:
-      - grade // the grade of the assignments
-      - 
+      - string name //name of assignment 
+      - int grade //  grade of the assignment
+        - int max_grade //max points of assignment
 public:
-
-
+    Deliverable(); // default constructor
+    
+    Deliverable(string name, int grade, int max_grade); //overloaded constructor
+    {
+        this->name = name;
+        this->grade = grade;
+        this->max_grade = max_grade;
+    }
+    void GetName();
+    void GetGrade();
+    void GetMaxGrade();
+    void SetGrade(int grade);
 }
 
 }
