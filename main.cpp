@@ -43,11 +43,21 @@ int main(int argc, char* argv[]){
     std::vector<std::string> types;
     std::vector<std::string> names;
     std::vector<float> scores;
+    /*
+    Type       Name          Score  --- check if line contains "Type"
 
+    Lab        Lab_1         25     --- check if the Type var is a valid choice
+    Assignment Assignment_1  50
+                                    --- make sure nothing is empty
+    Project1   Project_1     150    --- make sure the score can be cast into a float
+    Exam       Final_Exam    70
+    ===        ===           ===    --- end the parsing once the === limits are reached
+                                    --- print out any of the "saved" outputs from the buffer
+     */
     std::string line;
     while(std::getline(fileIn, line)){
+        // cast the line into a string stream
         std::istringstream lineStringStream(line);
-        // TODO: - cast the score into an integer later
         std::string type, name, score;
 
         if(lineStringStream >> type >> name >> score){
@@ -77,8 +87,6 @@ int main(int argc, char* argv[]){
      *
      *
      *
-     * create ifstream object
-     * open the ifstream object
      * if file is open
      * take in the lines as such
      *
@@ -89,16 +97,7 @@ int main(int argc, char* argv[]){
                     while (linestream >> type >> name >> score){
                         if (type != "Type" && name != "Name" && score != "Score" ){
 
-Type       Name          Score  --- check if line contains "Type"
 
-Lab        Lab_1         25
-Assignment Assignment_1  50
-Project1   Project_1     150
-Exam       Final_Exam    70
-===        ===           ===
-     *
-     *
-     */
 
 
 
