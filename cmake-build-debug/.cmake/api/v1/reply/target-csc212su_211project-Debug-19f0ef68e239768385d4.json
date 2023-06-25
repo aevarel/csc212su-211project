@@ -115,7 +115,11 @@
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				1
+				1,
+				5,
+				6,
+				7,
+				8
 			]
 		},
 		{
@@ -153,8 +157,28 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "readme.md",
+			"path" : "README.md",
 			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "assignment.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "category.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "exam.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lab.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"
