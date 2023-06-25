@@ -1,3 +1,4 @@
+#include "gradebook.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -28,11 +29,24 @@ bool isValidScore(const std::string& scoreInput) {
         return false;
     }
 }
+/*
+Type       Name          Score  --- check if line contains "Type"
+
+Lab        Lab_1         25     --- check if the Type var is a valid choice
+Assignment Assignment_1  50
+                                --- make sure nothing is empty
+Project1   Project_1     150    --- make sure the score can be cast into a float
+Exam       Final_Exam    70
+===        ===           ===    --- end the parsing once the === limits are reached
+                                --- print out any of the "saved" outputs from the buffer
+ */
 
 int main(int argc, char* argv[]){
 //    std::string fileName = argv[1];
     std::string fileName = "dataset1.txt";
-    std::ifstream fileIn(fileName);
+    Gradebook gradebookObj =  Gradebook(fileName);
+    std::ifstream fileIn(gradebookObj.getfileName());
+
 
     // exception handling / checking if file is opening
     if (!fileIn.is_open()) {
@@ -43,17 +57,6 @@ int main(int argc, char* argv[]){
     std::vector<std::string> types;
     std::vector<std::string> names;
     std::vector<float> scores;
-    /*
-    Type       Name          Score  --- check if line contains "Type"
-
-    Lab        Lab_1         25     --- check if the Type var is a valid choice
-    Assignment Assignment_1  50
-                                    --- make sure nothing is empty
-    Project1   Project_1     150    --- make sure the score can be cast into a float
-    Exam       Final_Exam    70
-    ===        ===           ===    --- end the parsing once the === limits are reached
-                                    --- print out any of the "saved" outputs from the buffer
-     */
     std::string line;
     while(std::getline(fileIn, line)){
         // cast the line into a string stream
@@ -79,25 +82,64 @@ int main(int argc, char* argv[]){
             }
         }
     }
-    for (std::size_t i = 0; i < (types.size()); i++){
-        // checking to see if the file was stored correctly
-        std::cout << types[i] << " " << names[i] << " " << scores[i] << "\n";
-    }
+
+
     /*
+     * Once file has been successfully input
+     * TODO: Casting the dataSet info into deliverable objects, keeping track of the objects
+     *  - initialize std::vector<*deliverable> delivPointers
+     *  - cast all of the inputs into deliverable objects using the vectors of the three inputs from datafile
+     *      - types, names, scores vectors from the file handling process
+     *      - initialize the Type string
+     *          - i.e. if deliverable->type = lab
+     *              - deliverable->setScoreMax(25)
+     *  - append pointers to the delivPointers vector
+     *      - will be used to check the values of each of the deliverable objects we made
+     *
+     * TODO: main menu input
+     *  - initialize masterbufferVector
+     *  - print out the main menu choices
+     *  - wait for input
+     * TODO: 1 = deliverable section
+     *      - return list of all deliverables, with names next to them
+     *          - query: set or get the deliverable points?
+     *              - if get
+     *                  - search list of vec *deliverables->Name for inputName
+     *                  - percentScore = turnPointstoPercent(*deliverable){
+     *                      return this->score / this->scoreMax}
+     *                  - bufferString = print out the *deliverable->score, then give the user the percentScore
+     *                  - std::cout << bufferString
+     *                  - ask if they want to save this bufferString to the file
+     *                  - if yes{
+     *                      - append bufferString to std::vector<strings> bufferVec
+     *                  if input = 0{
+     *                  masterbufferVector.append(each string in bufferVector)
+     *                  return to menu
+     * TODO: 2 = Category Grades
+     *  - initialize bufferVector
+     *  - return list of the category names [Labs, Assignments, Projects, Exam]
+     *         * - Assign maxPointTotal for the category names to be called on later*
+     *  - wait for user input by value
+     *      - maybe do 1 = labs, 2 = assignments, 3 = projects, 4 = exam
+     *  - return list of deliverables->type == userInput
+     *      * - since this is a repeated operation, make a function to return the deliverable-> name, gradePoints, gradePercentage
+     *  - for each of the deliverables of a certain type{
+     *      - sum += deliverable->grade
+     *      - tempVector.append(*deliverablePtr)
+     *      - buffer string >> printContents(*deliverablePtr) >> '\n' // will give us a printout of the deliverable Name->Score->gradePercentage //
+     *          this is to be able to loop through the entirety of the bufferVec and print out all the stuff after appending it
+     *      - bufferVec.append(bufferString)
+     *    }
+     *    bufferVec.append("the amount of points you have is " << sum << '/n');
+     *    bufferVec.append("your total grade for the section is" << floorDivision(sum/sectionMax) '\n');
+     *    for(size i : bufferVec){
+     *      - std::cout << bufferVec[i]
+     *
+     *      - from now on, just iterate thru the tempVector list
+     *  -
      *
      *
-     *
-     * if file is open
-     * take in the lines as such
-     *
-     * create three vectors to hold in the Type, Name, and Score
-     *
-     *
-     *              // using space separation as default, cast the three items into vars
-                    while (linestream >> type >> name >> score){
-                        if (type != "Type" && name != "Name" && score != "Score" ){
-
-
+     */
 
 
 
