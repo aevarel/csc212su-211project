@@ -10,4 +10,4 @@ add_executable(csc212su_211project
         gradebook.h
         main.cpp
         project_description.md
-        readme.md assignment.h category.h exam.h lab.h)
+        readme.md)

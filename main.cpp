@@ -113,7 +113,7 @@ int main(int argc, char* argv[]){
      *                  - if yes{
      *                      - append bufferString to std::vector<strings> bufferVec
      *                  if input = 0{
-     *                  masterbufferVector.append(each string in bufferVector)
+     *                  masterbufferVector.append(all contents of bufferVec and then another row of ===========)
      *                  return to menu
      * TODO: 2 = Category Grades
      *  - initialize bufferVector
@@ -134,7 +134,19 @@ int main(int argc, char* argv[]){
      *    bufferVec.append("your total grade for the section is" << floorDivision(sum/sectionMax) '\n');
      *    for(size i : bufferVec){
      *      - std::cout << bufferVec[i]
+     *  - ask user if they want to store this output into the file at the end
+     *  - if(input yes){
+     *      masterbufferVector.append(all contents of bufferVec and then another row of ===========)
+     *      }
+     *  if(input is 0){
+     *  return to main menu loop}
      *
+     *  TODO: 3 = Course Grades
+     *   - initialize bufferVector
+         - ask user what they want
+            - return all individual grades, course overall points, and their overall grade percentage
+            - return total scores of all categories, the overall points in each course, and their total percent grade
+            - return course overall points, then the percent grade of the course
      *      - from now on, just iterate thru the tempVector list
      *  -
      *

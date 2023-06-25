@@ -45,6 +45,7 @@ class Gradebook {
 
 private:
     std::string fileName;
+    std::vector<std::string> masterStorageBuffer;
 
 public:
     std::vector<Deliverable>;
