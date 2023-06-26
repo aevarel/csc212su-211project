@@ -1,3 +1,0 @@
-C:/Users/Colin/Documents/SCHOOL STUFF/CSC-212/csc212su-211project/cmake-build-debug/CMakeFiles/csc212su_211project.dir
-C:/Users/Colin/Documents/SCHOOL STUFF/CSC-212/csc212su-211project/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Colin/Documents/SCHOOL STUFF/CSC-212/csc212su-211project/cmake-build-debug/CMakeFiles/rebuild_cache.dir

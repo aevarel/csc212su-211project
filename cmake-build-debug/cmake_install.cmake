@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Colin/Documents/SCHOOL STUFF/CSC-212/csc212su-211project
+# Install script for directory: C:/Users/frabky/OneDrive/Documents/GitHub/csc212su-211project
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Colin/Documents/SCHOOL STUFF/CSC-212/csc212su-211project/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/frabky/OneDrive/Documents/GitHub/csc212su-211project/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

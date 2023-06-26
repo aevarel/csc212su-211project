@@ -1,4 +1,7 @@
-"C:\Program Files\JetBrains\CLion 2023.1.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.1.3/bin/ninja/win/x64/ninja.exe" -G Ninja -S "C:\Users\Colin\Documents\SCHOOL STUFF\CSC-212\csc212su-211project" -B "C:\Users\Colin\Documents\SCHOOL STUFF\CSC-212\csc212su-211project\cmake-build-debug"
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/Colin/Documents/SCHOOL STUFF/CSC-212/csc212su-211project/cmake-build-debug
+"C:\Program Files\JetBrains\CLion 2023.1.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S C:\Users\frabky\OneDrive\Documents\GitHub\csc212su-211project -B C:\Users\frabky\OneDrive\Documents\GitHub\csc212su-211project\cmake-build-debug
+CMake Error at CMakeLists.txt:15:
+  Parse error.  Expected a command name, got unquoted argument with text
+  "=======".
+
+
+-- Configuring incomplete, errors occurred!
