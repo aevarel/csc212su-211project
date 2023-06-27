@@ -6,32 +6,6 @@
 #include <string>
 #include <limits>
 
-// and check that the type is of valid choice of assignment type
-bool isValidType(const std::string& typeInput){
-    // list of valid assignment type choices
-    const std::string validTypes[] = {"Lab", "Assignment", "Project", "Exam"};
-    // parse thru the validTypes array, check if the typeInput is in the array
-    for(const std::string& types : validTypes){
-        if(typeInput == types){
-            // input type is in array
-            return true;
-        }
-    }
-    return false;
-}
-
-// also need to check that the score column is valid and not any strings
-bool isValidScore(const std::string& scoreInput) {
-    // exception handling to see if the scoreInput is able to be cast to float
-    try {
-        std::stof(scoreInput);
-        return true;
-    } catch (std::invalid_argument &e) {
-        return false;
-    }
-}
-
-// handle every input so that it falls between the range of the selections of the menu, will be used differently each time it is called essentially to take in input with correct ranges
 
 int inputHandleRange(int fromNumber, int toNumber){
     int input;
@@ -69,11 +43,6 @@ Exam       Final_Exam    70
  */
 
 
-// TODO:
-//      - rework the printGradebookSelection into returning a variable which contains all of the contents of the printing to be printed
-//         - concatenate them all into a buffer statement
-        // - append these statements into one masterBuffer
-        // - print back into the datasetfile or another file at end of program
 int main(int argc, char* argv[]){
 //    std::string fileName = argv[1];
     std::string fileName = "dataset1.txt";
@@ -101,7 +70,7 @@ int main(int argc, char* argv[]){
             if (!type.empty() && !name.empty() && !score.empty()) {
                 // also need to check that the score column is valid and not any strings
                 // and check that the type is of valid choice of assignment type
-                if (isValidType(type) && isValidScore(score)) {
+                if (gradebookObj.isValidType(type) && gradebookObj.isValidScore(score)) {
                     // (redundant prolly) but check that each of the things are not "===" (signals end of file reading)
                     if (type == "===" || name == "===" || score == "===") {
                         // break out of all while loops, close the file, continue to the main program
@@ -119,13 +88,11 @@ int main(int argc, char* argv[]){
 
     // initialize the main menu choice variables
     int gradebookMenuChoice;
-    /*
-    * TODO: main menu input
-    *  - wait for input
-    */
-    // - initialize masterbufferVector
-    // will append the strings that need to be written to the input file at the end of the menu
     std::vector<std::string> masterbufferVector;
+    if(gradebookObj.gradebookPtrs.empty()){
+    std::cout << "Gradebook empty. Ending Program.\n;";
+    return 0;
+    }
 
     while (true) {
         gradebookObj.printGradebookSelection(gradebookObj.gradebookPtrs);
@@ -165,12 +132,11 @@ int main(int argc, char* argv[]){
                             delivPtrs[0]->setName(newName);
                             break;}
                         if(gradebookMenuChoice == 2) {
-                            float deliverableGrade;
+                            int deliverableGrade;
                             std::cout << "What would you like the new grade of the deliverable to be?\nInput: ";
                             std::cin >> deliverableGrade;
-
                             // Set the grade of the deliverable
-                            std::cout << "\nThe new grade of " << delivPtrs[0]->getGrade() << " is " << deliverableGrade << "\n\n";
+                            std::cout << "\nThe new grade of " << delivPtrs[0]->getName() << " is " << deliverableGrade << "\n\n";
                             delivPtrs[0]->setGrade(deliverableGrade);
                             break;}
                         }
@@ -258,68 +224,25 @@ int main(int argc, char* argv[]){
                 break;
             }
         }
+
+
+    // at the end of the program, overwrite the file with the updated version of the deliverables, reflecting changes made during runtime
+
+    std::ofstream fileStream(gradebookObj.getfileName());
+    if(!fileStream.is_open()){
+        std::cerr << "Couldn't open " << fileName << " for saving" << std::endl;
+        return 1;
     }
-
-        // modify the grade of the deliverable instead
-
-
-
-    /*
-     * Once file has been successfully input
-     * TODO: 1 = deliverable section
-     *                  - bufferString = print out the *deliverable->score, then give the user the percentScore
-     *                  - std::cout << bufferString
-     *                  - ask if they want to save this bufferString to the file
-     *                  - if yes{
-     *                      - append bufferString to std::vector<strings> bufferVec
-     *                  if input = 0{
-     *                  masterbufferVector.append(all contents of bufferVec and then another row of ===========)
-     *                  return to menu
-     *
-     * TODO: 2 = Category Grades
-     *  - initialize bufferVector
-     *  - return list of the category names [Labs, Assignments, Projects, Exam]
-     *         * - Assign maxPointTotal for the category names to be called on later*
-     *  - wait for user input by value
-     *      - maybe do 1 = labs, 2 = assignments, 3 = projects, 4 = exam
-     *  - return list of deliverables->type == userInput
-     *      * - since this is a repeated operation, make a function to return the deliverable-> name, gradePoints, gradePercentage
-     *  - for each of the deliverables of a certain type{
-     *      - sum += deliverable->grade
-     *      - tempVector.append(*deliverablePtr)
-     *      - buffer string >> printContents(*deliverablePtr) >> '\n' // will give us a printout of the deliverable Name->Score->gradePercentage //
-     *          this is to be able to loop through the entirety of the bufferVec and print out all the stuff after appending it
-     *      - bufferVec.append(bufferString)
-     *    }
-     *    bufferVec.append("the amount of points you have is " << sum << '/n');
-     *    bufferVec.append("your total grade for the section is" << floorDivision(sum/sectionMax) '\n');
-     *    for(size i : bufferVec){
-     *      - std::cout << bufferVec[i]
-     *  - ask user if they want to store this output into the file at the end
-     *  - if(input yes){
-     *      masterbufferVector.append(all contents of bufferVec and then another row of ===========)
-     *      }
-     *  if(input is 0){
-     *  return to main menu loop}
-     *
-     *  TODO: 3 = Course Grades
-     *   - initialize bufferVector
-         - ask user what they want
-            - return all individual grades, course overall points, and their overall grade percentage
-                - if this{
-                    -
-            - return total scores of all categories, the overall points in each course, and their total percent grade
-            - return course overall points, then the percent grade of the course
-
-
-     *
-     *
-     */
-
-
-
-
-
+    else{
+        fileStream << "Type        Name          Score\n\n";
+        for(auto &deliverable : gradebookObj.gradebookPtrs){
+            fileStream << deliverable->getCategory() << "          " << deliverable->getName() << "          " << deliverable->getGrade() << '\n';
+        }
+        fileStream << "\n===          ===           ===";
+        fileStream.close();
+        std::cout << "Data saved to file. Ending program.\n";
+    }
+    }
 
     return 0;
     }
