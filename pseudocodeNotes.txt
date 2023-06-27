@@ -1,0 +1,63 @@
+     * TODO: Casting the dataSet info into deliverable objects, keeping track of the objects
+     *  - initialize std::vector<*deliverable> delivPointers
+     *  - cast all of the inputs into deliverable objects using the vectors of the three inputs from datafile
+     *      - types, names, scores vectors from the file handling process
+     *      - initialize the Type string
+     *          - i.e. if deliverable->type = lab
+     *              - deliverable->setScoreMax(25)
+     *  - append pointers to the delivPointers vector
+     *      - will be used to check the values of each of the deliverable objects we made
+     *
+     * TODO: main menu input
+     *  - initialize masterbufferVector
+     *  - print out the main menu choices
+     *  - wait for input
+     * TODO: 1 = deliverable section
+     *      - return list of all deliverables, with names next to them
+     *          - query: set or get the deliverable points?
+     *              - if get
+     *                  - search list of vec *deliverables->Name for inputName
+     *                  - percentScore = turnPointstoPercent(*deliverable){
+     *                      return this->score / this->scoreMax}
+     *                  - bufferString = print out the *deliverable->score, then give the user the percentScore
+     *                  - std::cout << bufferString
+     *                  - ask if they want to save this bufferString to the file
+     *                  - if yes{
+     *                      - append bufferString to std::vector<strings> bufferVec
+     *                  if input = 0{
+     *                  masterbufferVector.append(all contents of bufferVec and then another row of ===========)
+     *                  return to menu
+     * TODO: 2 = Category Grades
+     *  - initialize bufferVector
+     *  - return list of the category names [Labs, Assignments, Projects, Exam]
+     *         * - Assign maxPointTotal for the category names to be called on later*
+     *  - wait for user input by value
+     *      - maybe do 1 = labs, 2 = assignments, 3 = projects, 4 = exam
+     *  - return list of deliverables->type == userInput
+     *      * - since this is a repeated operation, make a function to return the deliverable-> name, gradePoints, gradePercentage
+     *  - for each of the deliverables of a certain type{
+     *      - sum += deliverable->grade
+     *      - tempVector.append(*deliverablePtr)
+     *      - buffer string >> printContents(*deliverablePtr) >> '\n' // will give us a printout of the deliverable Name->Score->gradePercentage //
+     *          this is to be able to loop through the entirety of the bufferVec and print out all the stuff after appending it
+     *      - bufferVec.append(bufferString)
+     *    }
+     *    bufferVec.append("the amount of points you have is " << sum << '/n');
+     *    bufferVec.append("your total grade for the section is" << floorDivision(sum/sectionMax) '\n');
+     *    for(size i : bufferVec){
+     *      - std::cout << bufferVec[i]
+     *  - ask user if they want to store this output into the file at the end
+     *  - if(input yes){
+     *      masterbufferVector.append(all contents of bufferVec and then another row of ===========)
+     *      }
+     *  if(input is 0){
+     *  return to main menu loop}
+     *
+     *  TODO: 3 = Course Grades
+     *   - initialize bufferVector
+         - ask user what they want
+            - return all individual grades, course overall points, and their overall grade percentage
+                - if this{
+                    -
+            - return total scores of all categories, the overall points in each course, and their total percent grade
+            - return course overall points, then the percent grade of the course

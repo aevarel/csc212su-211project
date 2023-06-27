@@ -1,0 +1,19 @@
+Type       Name          Score
+
+Lab        Lab_1         25
+Lab	Lab_2	20
+Lab	Lab_3	20
+Lab	Lab_4	20
+Lab	Lab_5	20
+Lab	Lab_6	20
+Lab	Lab_7	20
+Lab	Lab_8	20
+Assignment Assignment_1  50
+Assignment Assignment_2  50
+Assignment Assignment_3  50
+Assignment Assignment_4  50
+Project1   Project_1     150
+Exam       Final_Exam    70
+Project2   Project_2     0
+
+===        ===           ===

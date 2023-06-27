@@ -1,80 +1,64 @@
 #include <vector>
 #include <string>
 
-
-class Gradebook {
-
-    class Deliverable{
+class Deliverable{
 // object of an assignment private: - string name
 // name of assignment - int grade
 // grade of the assignment - int max_grade
 // max points of assignment public: Deliverable();
 // default constructor
 
-    private:
-        // Reference: 0 = Labs deliverable, Assignments = 1, Projects = 2, Exam = 3
+private:
+    std::string name, category;
+    float grade;
 
-        // could make the first column of the input be an index, make categoryScores[1stColumn#] assign the name as its type
-        std::string name, category;
-        float grade;
+public:
+    int categoryScoreMax;
+    Deliverable(const std::string& name, const std::string& category, float grade) //overloaded constructor
+    {
+        this->category = category;
+        this->name = name;
+        // this will be the points of the grade
+        this->grade = grade;
+    }
+    std::string getName(){
+        return this->name;
+    }
+    int getGrade(){
+        return this->grade;
+    }
+    std::string getCategory(){
+        return this->category;
+    }
+    void setGrade(int grade){
+    this->grade = grade;
+    }
+    void setName(std::string name){
+    this->name = name;
+    }
+};
 
-    public:
-        Deliverable(const std::string& name, const std::string& category, float grade) //overloaded constructor
-        {
-            this->category = category;
-            this->name = name;
-            // this will be the points of the grade
-            this->grade = grade;
-        }
-        std::string getName(){
-            return this->name;
-        }
-        int getGrade(){
-            return this->grade;
-        }
-        std::string getCategory(){
-            return this->category;
-        }
-        void setGrade(int grade){
-        }
-        void setName(std::string name){
-
-        }
-
-    };
-
+class Gradebook {
 private:
     std::string fileName;
     std::vector<std::string> masterStorageBuffer;
 
 public:
-    std::vector<Deliverable>;
-    // parameterized constructor for Gradebook object is default
+    std::vector<Deliverable*> gradebookPtrs;
+
     explicit Gradebook(std::string fileName);
 
-    // variable handling methods
-    // setter for fileName
     void setfileName(const std::string& name);
-    // getter for fileName
     std::string getfileName();
-
-    // file handling methods
     bool isValidType(const std::string& typeInput);
     bool isValidScore(const std::string& scoreInput);
+    void generateGradebookPtrs(const std::vector<std::string> &types, const std::vector<std::string> &names, const std::vector<float> &scores);
+    void printGradebookSelection(std::vector<Deliverable *> gradebookPtrs);
+    std::vector<Deliverable *> searchGradebookType(std::string type);
+    std::vector<Deliverable *> searchGradebookName(std::string name);
+    float getCategoryMax(std::string category);
+    int sumPoints(std::vector<Deliverable *> gradebookPtrs);
+    float calculatePercentScore(int points, std::string category);
 
-    // main menu / functions responsible for the manipulation
-
-        // define friendclass
-
+    friend class Deliverable;
 };
-
-
-
-// return total grade for section pseudocode
-// Reference Indexes: 0 = Labs deliverable, Assignments = 1, Projects = 2, Exam = 3
-                // present the user with the options as referenced above
-    // float int sectionTotalGrade(int categoryIndex){
-        // iterate through vector of pointers to deliverables in gradebook object
-        //
-
-
